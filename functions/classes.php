@@ -1,7 +1,7 @@
 <?php
 
-// Configuration file; To be included on all pages with:
-// require_once("/path/to/functions/classes.php");
+// Global function file; To be included on all pages with:
+// require_once("functions/classes.php");
 
 
 require_once("config.php");
@@ -62,7 +62,6 @@ class DB {
 		
 		$db = new SQLite3($db_path);
 		$db->exec("INSERT INTO foo (title, url_string, timestring) VALUES ($title, $url, $time)");
-		$db->query('SELECT bar FROM foo');
 	}
 
 	function DBPath() {
