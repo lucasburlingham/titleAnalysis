@@ -71,7 +71,7 @@ class DB {
 	function count($title) {
 	
 		$db = new SQLite3($db_path);
-		$return = $db->query("SELECT * FROM titles WHERE title=$title");
+		$return = $db->query("SELECT COUNT(*) FROM titles WHERE title=$title");
 		return $return;
 	}
 
