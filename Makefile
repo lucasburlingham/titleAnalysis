@@ -12,4 +12,4 @@ extension:
 
 newdb:
 	cat config.php | grep '$db_path' | sed -e 's/$db_path =//g' -e 's/"//g' -e 's/;//g'
-	echo "CREATE TABLE titles (title TEXT, url_string, TEXT, datestring, DATETIME)" | sqlite3 titles.db
+	echo "CREATE TABLE titles (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, url_string TEXT NOT NULL, datestring DATETIME)" | sqlite3 titles.db
