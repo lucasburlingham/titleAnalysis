@@ -1,5 +1,7 @@
 all: 
-	tree > TREE.md
+	echo "```" > TREE.md
+	tree >> TREE.md
+	echo "```" >> TREE.md
 	php install/install.php
 	
 install:
