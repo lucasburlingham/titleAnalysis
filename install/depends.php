@@ -3,7 +3,7 @@
 require_once("functions/classes.php");
 
 $server = new Server();
-$php_version = $server->simplePHPVersion();
+$php_version = $server->simplephpversion();
 
 if (file_exists("/etc/php/$php_version/mods-available/pdo_sqlite.ini")) {
 	echo "Please run this with superuser privilages:\n";

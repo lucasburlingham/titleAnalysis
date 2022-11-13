@@ -10,7 +10,7 @@ require_once("install/depends.php");
 class JsonFile {
 	// See (https://developer.chrome.com/docs/extensions/mv3/external_extensions/#preference-linux)
 	// Create body of JSON file
-	function createBody($extension_dir, $extension_ver) {
+	function createbody($extension_dir, $extension_ver) {
 	$return = <<<"JSON"
 {
 	"external_crx": "$extension_dir",
@@ -22,7 +22,7 @@ JSON;
 
 	
 	// Create filename
-	function createFilename($extension_ID) {
+	function createfilename($extension_ID) {
 		$return = $extension_ID . ".json";
 		return $return;
 	}
@@ -46,7 +46,7 @@ class Server{
 		return $return;
 	}
 
-	function simplePHPVersion() {
+	function simplephpversion() {
 		$version = phpversion();
 		$version = substr($version,0,3);
 	}
@@ -56,15 +56,29 @@ class Server{
 
 
 class DB {
-
+	
 	function insert($title, $url) {
+		$db = new SQLite3($db_path, SQLITE3_OPEN_CREATE);
 		$time = time();
 		
-		$db = new SQLite3($db_path);
-		$db->exec("INSERT INTO foo (title, url_string, timestring) VALUES ($title, $url, $time)");
+		$db->exec("INSERT INTO titles (title, url_string, timestring) VALUES ($title, $url, $time)");
 	}
 
-	function DBPath() {
+	function dbpath() {
 		return $db_path;
+	}
+
+	function count($title) {
+	
+		$db = new SQLite3($db_path);
+		$return = $db->query("SELECT * FROM titles WHERE title=$title");
+		return $return;
+	}
+
+	function totalcount() {
+	
+		$db = new SQLite3($db_path);
+		$return = $db->query("SELECT last_insert_rowid()");
+		return $return;
 	}
 }

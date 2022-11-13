@@ -3,7 +3,7 @@
 
 $o = new JsonFile();
 $body = $o->createBody($extension_dir,$extension_ID);
-$filename = $o->createFilename($extension_ID);
+$filename = $o->createfilename($extension_ID);
 
 
 === MOVE TO PROPER LOCATION ===
