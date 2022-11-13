@@ -1,9 +1,31 @@
 <?php
 
 
-require_once("../install/depends.php");
-require_once("../functions/classes.php");
+require_once("install/depends.php");
+require_once("functions/classes.php");
 
-new SQLite3($db_path);
 
-echo "Sqlitedb path: $db_path";
+if(isset($_POST['title']) && isset($_POST['url'])) {
+	$title = $_POST['title'];
+	$db = new DB();
+	$db->insert($title, $url);
+	http_response_code(200);
+} else {
+	http_response_code(406);
+}
+
+if(isset($_GET['count'])) {
+	$db = new DB();
+	$db->count($title);
+	http_response_code(200);
+} else {
+	http_response_code(406);
+}
+
+if(isset($_GET['totalcount'])) {
+	$db = new DB();
+	$db->totalcount();
+	http_response_code(200);
+} else {
+	http_response_code(406);
+}
