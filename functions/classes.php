@@ -2,12 +2,14 @@
 
 // Global function file; To be included on all pages with:
 // define('__ROOT__', dirname(dirname(__FILE__)));
-// require_once(__ROOT__ . '/install/depends.php');
-// require_once(__ROOT__ . '/functions/classes.php');
+// include_once(__ROOT__ . '/install/depends.php');
+// include_once(__ROOT__ . '/functions/classes.php');
 
 define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__ . '/install/depends.php');
-require_once(__ROOT__ . '/config.php');
+include_once(__ROOT__ . '/config.php');
+include_once(__ROOT__ . '/install/depends.php');
+
+$db_path = __ROOT__ . "/titles.db";
 
 
 class JsonFile {
@@ -60,41 +62,43 @@ class Server{
 
 class DB {
 	
-	function insert($title, $url) {
-		$db = new SQLite3($db_path, SQLITE3_OPEN_CREATE);
+	function insert($title, $url, $db_path) {
+		$db = new SQLite3($db_path);
+
 		$time = time();
-		
-		$db->exec("INSERT INTO titles (title, url_string, timestring) VALUES ($title, $url, $time)");
+		$statement = 'INSERT INTO titles (title, url_string, datestring) VALUES (\'' . $title . '\',\'' . $url . '\',' . $time . ')';
+		$result = $db->exec($statement);
+		return $result;
 	}
 
-	function dbpath() {
+	function dbpath($db_path) {
 		return $db_path;
 	}
 
-	function count($title) {
+	function count($title, $db_path) {
 	
 		$db = new SQLite3($db_path);
 		$return = $db->query("SELECT COUNT(*) FROM titles WHERE title=$title");
 		return $return;
 	}
 
-	function totalcount() {
+	function totalcount($db_path) {
 	
 		$db = new SQLite3($db_path);
 		$return = $db->query("SELECT last_insert_rowid()");
-		return $return;
+		return var_dump($return);
 	}
 }
 
 
 class Extension {
 
-	function version() {
+	function version($extension_ver) {
 		$return = $extension_ver;
 		return $return;
 	}
 
-	function id() {
+	function id($extension_ID) {
 		$return = $extension_ID;
 		return $return;
 	}
