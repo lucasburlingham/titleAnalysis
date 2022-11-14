@@ -1,0 +1,16 @@
+{
+	"manifest_version": 3,
+	"name": "Title Analysis Worker",
+	"version": "0.0.1",
+	"description": "Sends titles to TitleAnalysis backend",
+	"content_scripts": [
+		{
+			"js": [
+				"content.js"
+			],
+			"matches": [
+				"<all_urls>"
+			]
+		}
+	]
+}
