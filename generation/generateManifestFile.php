@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("../functions/classes.php");
+include_once("../functions/classes.php");
 
 $server = new Extension;
 $version = $server->version();

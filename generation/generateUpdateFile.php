@@ -1,7 +1,8 @@
 <?php
 
 
-require_once("functions/classes.php");
+define('__ROOT__', dirname(dirname(__FILE__)));
+include_once(__ROOT__ . '/functions/classes.php');
 
 $server = new Server;
 
