@@ -11,7 +11,7 @@
 	<title>Title Analysis Install</title>
 	<meta http-equiv="refresh" content="5; url=install.php">
 
-	<script>
+	<!-- <script>
 		var startingInt = 5;
 
 		const countdownTimeout = setTimeout({
@@ -20,7 +20,7 @@
 			countdownTimeout.innerText = startingInt;
 			startingInt--;
 		}, 1000);
-	</script>
+	</script> -->
 </head>
 <body>
 	Please allow extension to be installed in the window that will open in less than <span id="countdown">5</span> seconds...
