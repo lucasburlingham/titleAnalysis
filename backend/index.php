@@ -1,8 +1,9 @@
 <?php
 
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__ . '/install/depends.php');
+require_once(__ROOT__ . '/functions/classes.php');
 
-require_once("install/depends.php");
-require_once("functions/classes.php");
 
 
 if(isset($_POST['title']) && isset($_POST['url'])) {
@@ -29,3 +30,4 @@ if(isset($_GET['totalcount'])) {
 } else {
 	http_response_code(406);
 }
+

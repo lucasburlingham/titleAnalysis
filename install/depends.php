@@ -1,6 +1,7 @@
 <?php
 
-require_once("functions/classes.php");
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__ . '/functions/classes.php');
 
 $server = new Server();
 $php_version = $server->simplephpversion();

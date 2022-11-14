@@ -1,11 +1,14 @@
 <?php
 
 // Global function file; To be included on all pages with:
-// require_once("functions/classes.php");
+// define('__ROOT__', dirname(dirname(__FILE__)));
+// require_once(__ROOT__ . '/install/depends.php');
+// require_once(__ROOT__ . '/functions/classes.php');
 
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__ . '/install/depends.php');
+require_once(__ROOT__ . '/config.php');
 
-require_once("config.php");
-require_once("install/depends.php");
 
 class JsonFile {
 	// See (https://developer.chrome.com/docs/extensions/mv3/external_extensions/#preference-linux)
@@ -79,6 +82,20 @@ class DB {
 	
 		$db = new SQLite3($db_path);
 		$return = $db->query("SELECT last_insert_rowid()");
+		return $return;
+	}
+}
+
+
+class Extension {
+
+	function version() {
+		$return = $extension_ver;
+		return $return;
+	}
+
+	function id() {
+		$return = $extension_ID;
 		return $return;
 	}
 }

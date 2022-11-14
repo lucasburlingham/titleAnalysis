@@ -4,3 +4,4 @@ signing.pem
 Makefile
 *.db
 *.crx
+*.pem*
