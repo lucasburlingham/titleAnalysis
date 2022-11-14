@@ -2,3 +2,4 @@ db.sqlite
 docs/TREE.md
 signing.pem.pub
 signing.pem
+Makefile
